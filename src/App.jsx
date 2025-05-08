@@ -1,16 +1,21 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import HomePage from "./pages/HomePage"
-import BeritaDetail from "./pages/BeritaDetail"
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import BeritaList from "./components/BeritaList";
+import BeritaDetail from "./components/BeritaDetail";
 
-function App() {
+const App = () => {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/berita/:id" element={<BeritaDetail />} />
+        <Route path="/tips" element={<BeritaList />} />
+        <Route path="/tips/:id" element={<BeritaDetail />} />
       </Routes>
     </Router>
-  )
-}
+  );
+};
 
 export default App;
