@@ -1,32 +1,37 @@
 import React, { useEffect, useState } from "react";
 import BeritaCard from "./BeritaCard";
 import { getBerita } from "../services/api";
+import "./BeritaList.css";
 
-const BeritaList = () => {
+const BeritaList = ({ selectedCategory }) => {
   const [berita, setBerita] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getBerita().then((data) => {
-      console.log("DATA DARI API:", data);
-      setBerita(data); // Menggunakan data yang diterima dari API
+      console.log("Data berita:", data); // Debug
+      setBerita(data);
       setLoading(false);
     });
   }, []);
 
-  if (loading) return <p className="text-center py-10 text-gray-500">Loading berita...</p>;
+  const filteredBerita = selectedCategory
+    ? berita.filter((item) => item.category?.name === selectedCategory)
+    : berita;
+
+  if (loading) return <p className="loading-text">Loading berita...</p>;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {berita.map((item) => (
+    <div className="berita-list">
+      {filteredBerita.map((item) => (
         <BeritaCard
-        key={item.id}
-        id={item.id}
-        title={item.name}
-        excerpt={item.content?.slice(0, 100)}
-        image={`http://localhost:8000/storage/${item.thumbnail}`}
-        author={item.author}
-      />        
+          key={item.id}
+          id={item.id}
+          title={item.name}
+          excerpt={item.content?.slice(0, 100)}
+          image={`http://localhost:8000/storage/${item.thumbnail}`}
+          author={item.author?.name} 
+        />
       ))}
     </div>
   );

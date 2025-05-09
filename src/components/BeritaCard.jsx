@@ -21,7 +21,8 @@ function BeritaCard({ id, title, excerpt, image, author }) {
           ></div>
         </div>
         <p className="text-xs text-gray-500 italic mt-auto">
-            Author : {author?.name ?? "Unknown"} 
+            Author : {author ?? "Unknown"}
+ 
         </p>
 
       </div>

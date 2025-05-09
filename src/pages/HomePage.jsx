@@ -1,5 +1,5 @@
 import React from "react";
-import logoskintalk from "../../public/logoskintalk.png"; // sesuaikan path
+import logoskintalk from "../../public/logoskintalk.png"; 
 
 const HomePage = () => {
   return (
