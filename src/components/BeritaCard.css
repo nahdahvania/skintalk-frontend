@@ -1,0 +1,73 @@
+.berita-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  max-width: 960px;
+  margin: 16px auto;
+}
+
+.berita-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.berita-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.berita-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.berita-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2d2d2d;
+  margin-bottom: 8px;
+}
+
+.berita-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.berita-link:hover {
+  text-decoration: underline;
+}
+
+.berita-excerpt {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.berita-author {
+  font-size: 0.75rem;
+  color: #888;
+  font-style: italic;
+  margin-top: auto;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .berita-card {
+    flex-direction: row;
+  }
+
+  .berita-image {
+    width: 240px;
+    height: 100%;
+  }
+
+  .berita-content {
+    flex: 1;
+  }
+}

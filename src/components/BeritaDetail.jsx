@@ -1,15 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import './BeritaDetail.css';
+import { useNavigate } from "react-router-dom";
 
 function BeritaDetail() {
   const { id } = useParams();
   const [berita, setBerita] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/berita/${id}`)
       .then((res) => {
-        setBerita(res.data.data); 
+        setBerita(res.data.data);
       })
       .catch((err) => {
         console.error("Gagal ambil data:", err);
@@ -19,16 +22,21 @@ function BeritaDetail() {
   if (!berita) return <p>Loading...</p>;
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="berita-detail-container">
+      {/* Tombol kembali dipindah ke sini */}
+      <button onClick={() => navigate(-1)} className="btn-kembali">
+        ← Kembali
+      </button>
+
       <img
         src={`http://localhost:8000/storage/${berita.thumbnail}`}
         alt={berita.name}
-        className="w-full rounded-xl mb-4 object-cover h-64"
+        className="berita-detail-image"
       />
-      <h1 className="text-3xl font-bold mb-2 text-gray-800">{berita.name}</h1>
-      <p className="text-sm text-gray-500 italic mb-6">By {berita.author?.name || "Unknown"}</p>
+      <h1 className="berita-detail-title">{berita.name}</h1>
+      <p className="berita-detail-author">Author : {berita.author?.name || "Unknown"}</p>
       <div
-        className="prose prose-lg max-w-none"
+        className="berita-detail-content"
         dangerouslySetInnerHTML={{ __html: berita.content }}
       ></div>
     </div>
