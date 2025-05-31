@@ -1,13 +1,15 @@
-.berita-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    padding: 24px;
-  }
-  
   .loading-text {
     text-align: center;
     margin-top: 40px;
     color: #555;
   }
-  
+  .berita-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 24px;
+  padding: 24px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+

@@ -9,7 +9,7 @@ const BeritaList = ({ selectedCategory }) => {
 
   useEffect(() => {
     getBerita().then((data) => {
-      console.log("Data berita:", data); // Debug
+      console.log("Data berita:", data); 
       setBerita(data);
       setLoading(false);
     });

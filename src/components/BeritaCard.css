@@ -6,8 +6,8 @@
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  max-width: 960px;
-  margin: 16px auto;
+  width: 100%;
+  margin: 0;
 }
 
 .berita-card:hover {
